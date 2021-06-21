@@ -222,27 +222,27 @@ p3endtrim=0.5;
 
 //p4
 p4rampH=14.57;
-p4rampfromID=2.5;
+p4rampfromID=2.5;  //2.5
 p4rampoverhangH=4;
 p4rsH=p4rampH-p4rampoverhangH;  //height of ramp surface
-p4rampfromOD=1.34;
+p4rampfromOD=1.34;  //1.34
 p4rampC1=10;
 p4rampC2=40;
 p4rampC2transX=10;
 p4rampC2transZ=3.82;
 p4basegapH=max(p2p4flatD*3,8);
 p4baseH=p4basegapH+nD;  //sin(45) of angle from front of needle??
-p4baseW=11.2;
+p4baseW=11.2;  //use a min max? default=11.2
 p4basegapW=p2W+0.2; //5.09
 p4clawW=min((needle2needle-(nX*2)),9);
 p4holesnumber=3;
 p4holeH=p4basegapH/2;
-p4rampW=max(min(p4clawW-3,4),2.5);
+p4rampW=2.5; //max(min(p4clawW-3,4),2.5);
 p4rampMinkD=(p4rampW/3)*2;  //minkoski diameter 
 p4rampWm=p4rampW-p4rampMinkD;
 p4clear=-0.5;  //distance above top of p4 from flipper in down position //need to fix -0.5?
-p4endtrim=0.5;
-p4clawWslanttop=1;   //0 = slant to rampW, p4rampW = no slant
+p4endtrim=0.5;  //0.5
+p4clawWslanttop=0;   //0 = slant to rampW, p4rampW = no slant
 
 echo("rampW", p4rampW);
 
