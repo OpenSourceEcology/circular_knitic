@@ -21,25 +21,62 @@ module CKp4(){
       difference(){
        minkowski(){
         union(){
+         difference(){
+         union(){
          translate([-p4baseOD/2+1.34,p4rampWm/2,p4rampH+p4baseH-(p4rampC1/2)])
          rotate([90,0,0])
           cylinder(h=p4rampWm,d=p4rampC1);
             
          intersection(){
           translate([-10,0,3.82])
-          translate([-p4baseOD/2+1.34,p4rampWm/2,p4rampH+p4baseH-(p4rampC2/2)])
+          translate([-p4baseOD/2+1.34,p4clawW/2,p4rampH+p4baseH-(p4rampC2/2)])
           rotate([90,0,0])
-           cylinder(h=p4rampWm,d=p4rampC2);
+           cylinder(h=p4clawW,d=p4rampC2);
                 
-          translate([-7,0,-2.86/2])
-          translate([-p4baseOD/2+1.34,p4rampWm/2,p4rampH+p4baseH-(p4rampC2/2)])
-           cube([p4rampC2,p4rampC2,p4rampC2],center=true);
-            
+          translate([0,0,-2.86/2])
+          translate([-(p4baseOD/2)+((p4baseOD-p4baseID)/4),0,p4rampH+p4baseH-(p4rampC2/2)])
+           cube([(p4baseOD-p4baseID)/2,p4clawW,p4rampC2],center=true);
          }//end intersection
-          
-//         translate([0,0,0])
-//         translate([-p4baseOD/2,p4clawW/2,0])
-//          cube([2,p4clawW,p4rampH+p4baseH+(p4rampC1/2)]);
+         }//end union
+//          translate([-p4baseOD/2,-(p4clawW/2)+p4rampWm,p4basegapH])
+//           cube([2+(p4clawW-p4rampW)/2,p4clawW-(p4rampWm*2),p4rampH+p4rampoverhangH]);
+       //trim left side 
+          translate([2+(p4clawW-p4rampWm)/2,0,0])
+          translate([-p4baseOD/2,(p4rampWm/2)-0.01,p4rampH+p4baseH-(p4rampC2/2)])
+           cube([p4rampC2,p4rampC2,p4rampC2]);
+       //trim left round
+          translate([2+(p4clawW-p4rampWm)/2,(p4clawW-p4rampWm)/2,0])
+          translate([-p4baseOD/2,(p4rampWm/2)-0.01,p4rampH+p4baseH-(p4rampC2/2)])
+           cylinder(d=(p4clawW-p4rampWm),h=p4rampC2, $fn=36);
+
+       //trim right side 
+          translate([2+(p4clawW-p4rampWm)/2,0,0])
+          translate([-p4baseOD/2,-p4rampC2-((p4rampWm/2)-0.01),p4rampH+p4baseH-(p4rampC2/2)])
+           cube([p4rampC2,p4rampC2,p4rampC2]);
+       //trim left round
+          translate([2+(p4clawW-p4rampWm)/2,-(p4clawW-p4rampWm)/2,0])
+          translate([-p4baseOD/2,-((p4rampWm/2)-0.01),p4rampH+p4baseH-(p4rampC2/2)])
+           cylinder(d=(p4clawW-p4rampWm),h=p4rampC2, $fn=36);
+         }//end difference
+
+
+//         translate([-p4baseOD/2+1.34,p4clawW/2,p4rampH+p4baseH-(p4rampC1/2)])
+//         rotate([90,0,0])
+//          cylinder(h=p4clawW,d=p4rampC1);
+            
+//         intersection(){
+//          translate([-10,0,3.82])
+//          translate([-p4baseOD/2+1.34,p4clawW/2,p4rampH+p4baseH-(p4rampC2/2)])
+//          rotate([90,0,0])
+//           cylinder(h=p4clawW,d=p4rampC2);
+
+//          translate([-p4baseOD/2,-(p4clawW/2)+p4rampWm,p4basegapH])
+//           cube([2+(p4clawW-p4rampW)/2,p4clawW-(p4rampWm*2),50]);
+            
+//         }//end intersection
+     
+
+
 
         }//end union
              
@@ -66,19 +103,15 @@ module CKp4(){
        translate([0,-p4clawW/2,0])
        translate([-(p4baseID/2)-p4rampfromID,0,p4baseH])
         cube([(p4baseID/2)+p4rampfromID,p4clawW,p4rampoverhangH]);
-       //trim left side 
-       translate([2+(p4clawW-p4rampW)/2,0,0])
-       translate([-p4baseOD/2,(p4rampW/2)-0.01,p4rampH+p4baseH-(p4rampC2/2)])
-        #cube([p4rampC2,p4rampC2,p4rampC2]);
-       //trim left round
-       translate([2+(p4clawW-p4rampW)/2,(p4clawW-p4rampW)/2,0])
-       translate([-p4baseOD/2,(p4rampW/2)-0.01,p4rampH+p4baseH-(p4rampC2/2)])
-        #cylinder(d=(p4clawW-p4rampW),h=p4rampC2, $fn=36);
 
-        
-       translate([-7,0,0])
-       translate([-p4baseOD/2,-(p4rampW/2)-(p4rampC2/2)+0.01,p4rampH+p4baseH-(p4rampC2/2)])
-        cube([p4rampC2,p4rampC2,p4rampC2],center=true);
+
+
+
+
+//trim right side        
+//       translate([-7,0,0])
+//       translate([-p4baseOD/2,-(p4rampW/2)-(p4rampC2/2)+0.01,p4rampH+p4baseH-(p4rampC2/2)])
+//        #cube([p4rampC2,p4rampC2,p4rampC2],center=true);
           
       }//end ramps difference
      } //end for rotate
