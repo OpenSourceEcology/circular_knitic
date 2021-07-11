@@ -23,9 +23,15 @@ module CKp4(){
         union(){
          difference(){
          union(){
-         translate([-p4baseOD/2+1.34,p4rampWm/2,p4rampH+p4baseH-(p4rampC1/2)])
+        intersection(){
+         translate([-p4baseOD/2+1.34,p4clawW/2,p4rampH+p4baseH-(p4rampC1/2)])
          rotate([90,0,0])
-          cylinder(h=p4rampWm,d=p4rampC1);
+          cylinder(h=p4clawW,d=p4rampC1);
+
+          translate([0,0,p4rampH+p4baseH-(p4rampC1/2)])
+          translate([-(p4baseOD/2)+((p4baseOD-p4baseID)/4),0,p4rampH+p4baseH-(p4rampC2/2)])
+           cube([(p4baseOD-p4baseID)/2,p4clawW-(p4rampWm*2),p4rampC2],center=true);
+        }
             
          intersection(){
           translate([-10,0,3.82])
@@ -35,7 +41,7 @@ module CKp4(){
                 
           translate([0,0,-2.86/2])
           translate([-(p4baseOD/2)+((p4baseOD-p4baseID)/4),0,p4rampH+p4baseH-(p4rampC2/2)])
-           cube([(p4baseOD-p4baseID)/2,p4clawW,p4rampC2],center=true);
+           cube([(p4baseOD-p4baseID)/2,p4clawW-(p4rampWm*2),p4rampC2],center=true);
          }//end intersection
          }//end union
 //          translate([-p4baseOD/2,-(p4clawW/2)+p4rampWm,p4basegapH])
@@ -46,7 +52,7 @@ module CKp4(){
            cube([p4rampC2,p4rampC2,p4rampC2]);
        //trim left round
           translate([2+(p4clawW-p4rampWm)/2,(p4clawW-p4rampWm)/2,0])
-          translate([-p4baseOD/2,(p4rampWm/2)-0.01,p4rampH+p4baseH-(p4rampC2/2)])
+          translate([-p4baseOD/2,(p4rampWm/2),p4rampH+p4baseH-(p4rampC2/2)])
            cylinder(d=(p4clawW-p4rampWm),h=p4rampC2, $fn=36);
 
        //trim right side 
