@@ -29,7 +29,7 @@ UPp3number=4;                 //4                 //18  ///4    //4        //2
 UPp4number=4;                 //4                 //18  ///4    //4        //2
 
 //distance from the inside face of one needle to the next
-UPneedle2needle=13.5334;     //default=14.35615  //try 8.414    //13.5334  //9.25
+UPneedle2needle=9.25;     //default=14.35615  //try 8.414    //13.5334  //9.25
 
 //mountain settings
 UPpMgrooveturnR=14; //radius of upper curved path in groove //14  //10

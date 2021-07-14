@@ -31,9 +31,58 @@ union(){
     for(i=[1:p2needles]){
         rotate([0,0,(360/p2number/p2needles/2)-(360/p2number/p2needles*i)]){
             translate([-p2OD/2-0.2,-needleWidth/2,0])
-            cube([p2needlegrooveDepth+0.2,needleWidth,p2H]);
+            #cube([p2needlegrooveDepth+0.2,needleWidth,p2H]);
         }
     }
+    
+//trim inside corners of needle groove
+    for(i=[1:p2needles]){
+        rotate([0,0,(360/p2number/p2needles/2)-(360/p2number/p2needles*i)]){
+            translate([-p2OD/2-0.2+p2needlegrooveDepth+0.2,0,0])
+            scale([0.5,1,1])
+            #cylinder(d=needleWidth,h=p2H);
+        }
+    }
+    
+//trim outer corners of needle groove
+    for(i=[1:p2needles]){
+        rotate([0,0,(360/p2number/p2needles/2)-(360/p2number/p2needles*i)]){
+            translate([(needleWidth/2)-p2OD/2-0.2,-needleWidth/2,0])
+            rotate([0,0,90+11.25])
+            cube([needleWidth/2,needleWidth,p2H+.1]);  
+            translate([(needleWidth/4)-p2OD/2-0.2,-needleWidth/2,0])
+            rotate([0,0,90+67.5])
+            cube([needleWidth/2,needleWidth,p2H+.1]);
+            mirror([0,1,0]){
+            translate([(needleWidth/2)-p2OD/2-0.2,-needleWidth/2,0])
+            rotate([0,0,90+11.25])
+            cube([needleWidth/2,needleWidth,p2H+.1]);  
+            translate([(needleWidth/4)-p2OD/2-0.2,-needleWidth/2,0])
+            rotate([0,0,90+67.5])
+            cube([needleWidth/2,needleWidth,p2H+.1]);
+            }
+
+        }
+    }
+
+//chamfer bottom
+    cylinder(h=0.5,d1=p2ID+0.5,d2=p2ID);      
+
+   difference(){  
+    cylinder(h=0.5,d=p2OD+1);
+    cylinder(h=0.5,d1=p2OD-0.5,d2=p2OD);      
+   }
+
+//chamfer top
+   translate([0,0,p2H-0.5])
+    cylinder(h=0.5,d1=p2ID,d2=p2ID+0.5);      
+   translate([0,0,p2H-0.5])
+   difference(){  
+    cylinder(h=0.5,d=p2OD+1);
+    cylinder(h=0.5,d1=p2OD,d2=p2OD-0.5);      
+   }
+
+
 
     for(i=[0:p2needles+1]){
         rotate([0,0,i*-360/p2number/p2needles])
