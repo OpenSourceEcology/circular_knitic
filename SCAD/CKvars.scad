@@ -233,7 +233,7 @@ p4rampC2transZ=3.82;
 p4basegapH=max(p2p4flatD*3,8);
 p4baseH=p4basegapH+nD;  //sin(45) of angle from front of needle??
 p4baseW=11.2;  //use a min max? default=11.2
-p4basegapW=p2W+0.2; //5.09
+p4basegapWslop=0.4; //5.09
 p4clawW=min((needle2needle-(nX*2)),9);
 p4holesnumber=3;
 p4holeH=p4basegapH/2;
@@ -401,8 +401,8 @@ p3grooveH2=pPspace1+pPplate1+pMgrooveC3;  //top of groove in p3
 
 p4baseOD=centerlineD+p4baseW;
 p4baseID=centerlineD-p4baseW;
-p4basegapOD=centerlineD+p4basegapW;
-p4basegapID=centerlineD-p4basegapW;
+p4basegapOD=p2OD+p4basegapWslop;
+p4basegapID=p2ID-p4basegapWslop;
 
 //firstcenter=(((((360/p2number/p2needles/2)/360*(p2OD*PI))-(needleWidth/2))/((360/p2number/p2needles/2)/360*(p2OD*PI)))*(360/p2number/p2needles/2))/2;
 //doesnt work on narrow needle arrangement, moved to second gap

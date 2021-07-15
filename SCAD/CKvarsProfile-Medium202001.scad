@@ -20,7 +20,7 @@
 UPp2number=12;                //12                //36  ///36   //12       //8
 
 //number of needles mounted on each "p2" part
-UPp2needles=5;                //5                 //10  ///5    //5        //7
+UPp2needles=10;                //5                 //10  ///5    //5        //7
 
 //number of "p3" parts around circle
 UPp3number=4;                 //4                 //18  ///4    //4        //2

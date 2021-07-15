@@ -12,7 +12,7 @@ module CKp4(){
  translate([p4baseOD/2,0,0]){
   difference(){  
    union(){
-    cylinder(h=p4baseH,d=p4baseOD-(p4basegapW*2)-((p4baseW-p4basegapW)/2*2));            
+    cylinder(h=p4baseH,d=p4basegapID);            
             
            /////ramps           
             
@@ -192,8 +192,8 @@ module CKp4(){
 
 //trim base gap ID/OD
    difference(){  
-    cylinder(h=p4basegapH,d=p4basegapOD+0.125);      
-    cylinder(h=p4basegapH,d=p4basegapID-0.125);      
+    cylinder(h=p4basegapH,d=p4basegapOD);      
+    cylinder(h=p4basegapH,d=p4basegapID);      
    }
 
    difference(){
@@ -216,9 +216,7 @@ module CKp4(){
 
 //trim base gap ID/OD
    difference(){  
-   translate([0,0,0])
     cylinder(h=p4basegapH,d=p4basegapOD);      
-   translate([0,0,0])
     cylinder(h=p4basegapH,d=p4basegapID);      
    }
 
