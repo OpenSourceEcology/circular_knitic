@@ -20,7 +20,7 @@
 UPp2number=12;                //12                //36  ///36   //12       //8
 
 //number of needles mounted on each "p2" part
-UPp2needles=10;                //5                 //10  ///5    //5        //7
+UPp2needles=8;                //5                 //10  ///5    //5        //7
 
 //number of "p3" parts around circle
 UPp3number=4;                 //4                 //18  ///4    //4        //2
@@ -29,7 +29,7 @@ UPp3number=4;                 //4                 //18  ///4    //4        //2
 UPp4number=4;                 //4                 //18  ///4    //4        //2
 
 //distance from the inside face of one needle to the next
-UPneedle2needle=9.25;     //default=14.35615  //try 8.414    //13.5334  //9.25
+UPneedle2needle=8.8;     //default=14.35615  //try 8.414    //13.5334  //9.25
 
 //mountain settings
 UPpMgrooveturnR=14; //radius of upper curved path in groove //14  //10

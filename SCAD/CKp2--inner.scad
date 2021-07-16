@@ -85,12 +85,18 @@ union(){
 
 
     for(i=[0:p2needles+1]){
-        rotate([0,0,i*-360/p2number/p2needles])
+        rotate([0,0,i*-360/p2number/p2needles]){
+        //p2 to p3 holes
         translate([-p2OD/2-0.2,0,p2holeH-p3base45H])
         rotate([0,90,0])
         cylinder(h=p2OD-p2ID+0.2, d=p2p3flatD,$fn=36);
-    }
         
+        //p2 to p4 holes
+        translate([-p2OD/2-0.2,0,p2H-(p4basegapH-p4holeH)])
+        rotate([0,90,0])
+        cylinder(h=p2OD-p2ID+0.2, d=p2p4flatD,$fn=36);
+    }
+}
                
 
 echo(((((360/p2number/p2needles/2)/360*(p2OD*PI))-(needleWidth/2))/((360/p2number/p2needles/2)/360*(p2OD*PI)))*(360/p2number/p2needles/2));
@@ -98,7 +104,7 @@ echo(((((360/p2number/p2needles/2)/360*(p2OD*PI))-(needleWidth/2))/((360/p2numbe
 //firstcenter=(((((360/p2number/p2needles/2)/360*(p2OD*PI))-(needleWidth/2))/((360/p2number/p2needles/2)/360*(p2OD*PI)))*(360/p2number/p2needles/2))/2; not using         
 
         //end hole
-        
+ /*       
         //p4 mount holes
         // 1st p4 mount hole
         rotate([0,0,-(360/p2number/p2needles)*2]){
@@ -116,7 +122,7 @@ echo(((((360/p2number/p2needles/2)/360*(p2OD*PI))-(needleWidth/2))/((360/p2numbe
                 #cylinder(h=p2OD-p2ID+0.2, d=p2p4flatD,$fn=36);
             }
         } 
-
+*/
         //end p4 mount holes
 
 

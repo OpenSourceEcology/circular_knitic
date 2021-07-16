@@ -231,10 +231,11 @@ p4rampC2=40;
 p4rampC2transX=10;
 p4rampC2transZ=3.82;
 p4basegapH=max(p2p4flatD*3,8);
+p4basegapHslop=0.125;
 p4baseH=p4basegapH+nD;  //sin(45) of angle from front of needle??
 p4baseW=11.2;  //use a min max? default=11.2
 p4basegapWslop=0.4; //5.09
-p4clawW=min((needle2needle-(nX*2)),9);
+p4clawW=min((needle2needle-(nX*1.5)),9);  //min((needle2needle-(nX*2)),9)
 p4holesnumber=3;
 p4holeH=p4basegapH/2;
 p4rampW=1.75; //max(min(p4clawW-3,4),2.5);

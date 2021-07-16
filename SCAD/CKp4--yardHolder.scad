@@ -44,8 +44,7 @@ module CKp4(){
            cube([(p4baseOD-p4baseID)/2,p4clawW-(p4rampWm*2),p4rampC2],center=true);
          }//end intersection
          }//end union
-//          translate([-p4baseOD/2,-(p4clawW/2)+p4rampWm,p4basegapH])
-//           cube([2+(p4clawW-p4rampW)/2,p4clawW-(p4rampWm*2),p4rampH+p4rampoverhangH]);
+
        //trim left side 
           translate([2+(p4clawW-p4rampWm)/2,0,0])
           translate([-p4baseOD/2,(p4rampWm/2)-0.01,p4rampH+p4baseH-(p4rampC2/2)])
@@ -64,25 +63,6 @@ module CKp4(){
           translate([-p4baseOD/2,-((p4rampWm/2)-0.01),p4rampH+p4baseH-(p4rampC2/2)])
            cylinder(d=(p4clawW-p4rampWm),h=p4rampC2, $fn=36);
          }//end difference
-
-
-//         translate([-p4baseOD/2+1.34,p4clawW/2,p4rampH+p4baseH-(p4rampC1/2)])
-//         rotate([90,0,0])
-//          cylinder(h=p4clawW,d=p4rampC1);
-            
-//         intersection(){
-//          translate([-10,0,3.82])
-//          translate([-p4baseOD/2+1.34,p4clawW/2,p4rampH+p4baseH-(p4rampC2/2)])
-//          rotate([90,0,0])
-//           cylinder(h=p4clawW,d=p4rampC2);
-
-//          translate([-p4baseOD/2,-(p4clawW/2)+p4rampWm,p4basegapH])
-//           cube([2+(p4clawW-p4rampW)/2,p4clawW-(p4rampWm*2),50]);
-            
-//         }//end intersection
-     
-
-
 
         }//end union
              
@@ -103,30 +83,7 @@ module CKp4(){
        //trim from bottom 
        translate([0,0,0])
        translate([-p4baseOD/2,p4rampW/2,p4baseH-(p4rampC2/2)])
-        cube([p4rampC2,p4rampC2,p4rampC2-p4basegapH],center=true);  
-
-/*
-       //trim overhang
-       translate([0,-p4clawW/2,0])
-       translate([-(p4baseID/2)-p4rampfromID,0,p4baseH])
-       difference(){
-        cube([(p4baseID/2),p4clawW,p4rampoverhangH]);
-       difference(){    
-       translate([(p4rampoverhangH/8),p4clawW/2,p4rampoverhangH-(p4rampoverhangH/8)])
-        cube([p4rampoverhangH/4,p4clawW,p4rampoverhangH/4],center=true);   
-       translate([(p4rampoverhangH/4),p4clawW,p4rampoverhangH-(p4rampoverhangH/4)])
-        rotate([90,0,0])
-        cylinder(d=p4rampoverhangH/2, h=p4clawW);   
-        //cube([p4rampoverhangH/2,p4clawW,p4rampoverhangH/2],center=true);
-       }
-   }
-*/
-
-
-//trim right side        
-//       translate([-7,0,0])
-//       translate([-p4baseOD/2,-(p4rampW/2)-(p4rampC2/2)+0.01,p4rampH+p4baseH-(p4rampC2/2)])
-//        #cube([p4rampC2,p4rampC2,p4rampC2],center=true);
+        cube([p4rampC2,p4rampC2,p4rampC2-p4basegapH+p4basegapHslop],center=true);  
           
       }//end ramps difference
      } //end for rotate
@@ -138,7 +95,7 @@ module CKp4(){
      rotate([0,0,(360/p2number/p2needles)-(360/p2number/p2needles*i)-(((360/p2number/p2needles))/2)]){
       hull(){
        translate([-p4baseOD/2,-p4clawW/2,0])
-        cube([(p4baseOD-p4baseID)/2,p4clawW,p4basegapH]);
+        cube([(p4baseOD-p4baseID)/2,p4clawW,p4basegapH+p4basegapHslop]);
        translate([-p4baseOD/2,-((p4rampW+p4clawWslanttop)/2),p4baseH-0.1])
         cube([(p4baseOD-p4baseID)/2,p4rampW+p4clawWslanttop,0.1]);
 
@@ -163,25 +120,7 @@ module CKp4(){
     cylinder(h=0.5,d1=p4baseID+(p4rampfromID*2),d2=p4baseID+(p4rampfromID*2)-0.5);
    translate([0,0,p4baseH])
     cylinder(h=p4rampoverhangH-1,d=p4baseID+(p4rampfromID*2));   
-   
-/*
-       //trim overhang
-       translate([0,-p4clawW/2,0])
-       translate([-(p4baseID/2)-p4rampfromID,0,p4baseH])
-       difference(){
-        cube([(p4baseID/2),p4clawW,p4rampoverhangH]);
-       difference(){    
-       translate([(p4rampoverhangH/8),p4clawW/2,p4rampoverhangH-(p4rampoverhangH/8)])
-        cube([p4rampoverhangH/4,p4clawW,p4rampoverhangH/4],center=true);   
-       translate([(p4rampoverhangH/4),p4clawW,p4rampoverhangH-(p4rampoverhangH/4)])
-        rotate([90,0,0])
-        cylinder(d=p4rampoverhangH/2, h=p4clawW);   
-        //cube([p4rampoverhangH/2,p4clawW,p4rampoverhangH/2],center=true);
-       }
-   }
-*/
-
-        
+           
    translate([-p4baseOD/2,-p4baseOD/2,0]){    
     cube([p4baseOD,p4baseOD/2,p4baseH]);
    }
@@ -192,15 +131,9 @@ module CKp4(){
 
 //trim base gap ID/OD
    difference(){  
-    cylinder(h=p4basegapH,d=p4basegapOD);      
-    cylinder(h=p4basegapH,d=p4basegapID);      
+    cylinder(h=p4basegapH+p4basegapHslop,d=p4basegapOD);      
+    cylinder(h=p4basegapH+p4basegapHslop,d=p4basegapID);      
    }
-
-   difference(){
-    cylinder(h=p4basegapH,d=p4basegapOD);  
-    cylinder(h=p4basegapH,d=p4basegapID);    
-   }
-
 
 //trim OD
    difference(){
@@ -212,12 +145,6 @@ module CKp4(){
    difference(){  
     cylinder(h=0.5,d1=p4basegapOD+0.5,d2=p4basegapOD);      
     cylinder(h=0.5,d1=p4basegapID-0.5,d2=p4basegapID);      
-   }
-
-//trim base gap ID/OD
-   difference(){  
-    cylinder(h=p4basegapH,d=p4basegapOD);      
-    cylinder(h=p4basegapH,d=p4basegapID);      
    }
 
 
