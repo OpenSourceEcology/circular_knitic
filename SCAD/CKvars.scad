@@ -230,6 +230,7 @@ p4rampC1=10;
 p4rampC2=40;
 p4rampC2transX=10;
 p4rampC2transZ=3.82;
+p4rampflairfromOD=1.5;
 p4basegapH=max(p2p4flatD*3,8);
 p4basegapHslop=0.125;
 p4baseH=p4basegapH+nD;  //sin(45) of angle from front of needle??

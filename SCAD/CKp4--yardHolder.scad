@@ -46,20 +46,20 @@ module CKp4(){
          }//end union
 
        //trim left side 
-          translate([2+(p4clawW-p4rampWm)/2,0,0])
+          translate([p4rampflairfromOD+(p4clawW-p4rampWm)/2,0,0])
           translate([-p4baseOD/2,(p4rampWm/2)-0.01,p4rampH+p4baseH-(p4rampC2/2)])
-           cube([p4rampC2,p4rampC2,p4rampC2]);
+           #cube([p4rampC2,p4rampC2,p4rampC2]);
        //trim left round
-          translate([2+(p4clawW-p4rampWm)/2,(p4clawW-p4rampWm)/2,0])
+          translate([p4rampflairfromOD+(p4clawW-p4rampWm)/2,(p4clawW-p4rampWm)/2,0])
           translate([-p4baseOD/2,(p4rampWm/2),p4rampH+p4baseH-(p4rampC2/2)])
            cylinder(d=(p4clawW-p4rampWm),h=p4rampC2, $fn=36);
 
        //trim right side 
-          translate([2+(p4clawW-p4rampWm)/2,0,0])
+          translate([p4rampflairfromOD+(p4clawW-p4rampWm)/2,0,0])
           translate([-p4baseOD/2,-p4rampC2-((p4rampWm/2)-0.01),p4rampH+p4baseH-(p4rampC2/2)])
            cube([p4rampC2,p4rampC2,p4rampC2]);
        //trim left round
-          translate([2+(p4clawW-p4rampWm)/2,-(p4clawW-p4rampWm)/2,0])
+          translate([p4rampflairfromOD+(p4clawW-p4rampWm)/2,-(p4clawW-p4rampWm)/2,0])
           translate([-p4baseOD/2,-((p4rampWm/2)-0.01),p4rampH+p4baseH-(p4rampC2/2)])
            cylinder(d=(p4clawW-p4rampWm),h=p4rampC2, $fn=36);
          }//end difference
