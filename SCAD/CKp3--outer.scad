@@ -49,9 +49,9 @@ module CKp3(){
     
     $fn=rez; //defines resolution of circles.
 
-    centerlineD=p2ID+(p2W+(p3wiggle*2));
+//    centerlineD=p2ID+(p2W+(p3wiggle*2));
        
-    echo(centerlineD); 
+//    echo(centerlineD); 
         
 translate([p3baseOD/2,0,0]){
             
@@ -65,20 +65,20 @@ difference(){
             //ridge
 translate([0,0,p3base45H])
 difference(){
-  cylinder(h=p3ridgeH,d=centerlineD-((p2W+(p3wiggle*2)/2)));
+  cylinder(h=p3ridgeH,d=(p2ID-p3basegapWslop));
   translate([0,0,0])
-    cylinder(h=p3ridgeH,d1=centerlineD-(p3ridgeW2*2)-((p2W+(p3wiggle*2)/2)),d2=centerlineD-(p3ridgeW1*2)-((p2W+(p3wiggle*2)/2)));    
+    cylinder(h=p3ridgeH,d1=(p2ID-p3basegapWslop)-(p3ridgeW2*2),d2=(p2ID-p3basegapWslop)-(p3ridgeW1*2));    
 }  //end diff
             
 difference(){
   translate([0,0,p3baseH])
-  cylinder(h=p3wallchamfH,d1=centerlineD+((p3wallchamfW+p3wallW)*2)+((p2W+(p3wiggle*2)/2)),d2=centerlineD+(p3wallW*2)+((p2W+(p3wiggle*2)/2)));
-  cylinder(h=p3wallchamfH+p3baseH,d=centerlineD+((p2W+(p3wiggle*2)/2)));
+  cylinder(h=p3wallchamfH,d1=p3wallID+((p3wallchamfW+p3wallW)*2),d2=p3wallOD);
+  cylinder(h=p3wallchamfH+p3baseH,d=p3wallID);
 }
             
 difference(){                                            
-  cylinder(h=p3wallH,d=centerlineD+(p3wallW*2)+((p2W+(p3wiggle*2)/2)));
-  cylinder(h=p3wallH,d=centerlineD+((p2W+(p3wiggle*2)/2)));              
+  cylinder(h=p3wallH,d=p3wallOD);
+  cylinder(h=p3wallH,d=p3wallID);              
 }
 } //end main union
 
@@ -105,11 +105,11 @@ translate([0,0,p3grooveH2])
     }
 
 
-        //slots    
+        //needle slots    
 for(i=[1:p2needles*(p2number/p3number)]){
   rotate([0,0,(360/p2number/p2needles/2)-(360/p2number/p2needles*i)]){
-  translate([((-centerlineD-(p3wallW*2)-((p2W+(p3wiggle*2)/2)))/2)-0.1,-p3grooveW/2,p3grooveH1-p3grooveHslop])
-    cube([p3wallW+0.2,p3grooveW,p3grooveH2-p3grooveH1+(p3grooveHslop*2)]);
+  translate([-p3wallOD,-p3grooveW/2,p3grooveH1-p3grooveHslop])
+    #cube([p3wallOD,p3grooveW,p3grooveH2-p3grooveH1+(p3grooveHslop*2)]);
   }
 }
     
@@ -131,7 +131,7 @@ for(i=[3:(p2needles*p2number/p3number)-3]){
     rotate([0,270,0])
 translate([0,0,0])
 union(){
-#cylinder(d1=p2p3flatHD,d2=0,h=(p2p3flatHD/2)/tan(45),$fn=36);
+cylinder(d1=p2p3flatHD,d2=0,h=(p2p3flatHD/2)/tan(45),$fn=36);
 translate([0,0,-(p2p3flatHD)/tan(45)])
 cylinder(d1=p2p3flatHD*3,d2=p2p3flatHD,h=(p2p3flatHD)/tan(45),$fn=36);
 //cylinder(d=p2p3flatD,h=p3upperwallW+(p2W+(p3wiggle*2)/2)+p2p3nutH,$fn=36);
@@ -155,7 +155,7 @@ translate([0,0,0])
 union(){
 cylinder(d1=p2p3flatHD,d2=0,h=(p2p3flatHD/2)/tan(45),$fn=36);
 translate([0,0,-(p2p3flatHD)/tan(45)])
-#cylinder(d1=p2p3flatHD*3,d2=p2p3flatHD,h=(p2p3flatHD)/tan(45),$fn=36);
+cylinder(d1=p2p3flatHD*3,d2=p2p3flatHD,h=(p2p3flatHD)/tan(45),$fn=36);
 } //end union
   } //end rotate       
 } //end for
@@ -168,7 +168,7 @@ translate([0,0,0])
 union(){
 cylinder(d1=p2p3flatHD,d2=0,h=(p2p3flatHD/2)/tan(45),$fn=36);
 translate([0,0,-(p2p3flatHD)/tan(45)])
-#cylinder(d1=p2p3flatHD*3,d2=p2p3flatHD,h=(p2p3flatHD)/tan(45),$fn=36);
+cylinder(d1=p2p3flatHD*3,d2=p2p3flatHD,h=(p2p3flatHD)/tan(45),$fn=36);
 } //end union
   } //end rotate       
 } //end for
@@ -214,7 +214,7 @@ for(i=[0:(p2number/p3number)-1]){
   rotate([0,0,(-360/p2number/p2needles*(p2needles-1))+(i*-360/p2number)]){
     translate([((-centerlineD-(p3wallW*2)-((p2W+(p3wiggle*2)/2)))/2)-0.1,0,p2holeH])
     rotate([0,90,0]){
-      #cylinder(h=p2OD-p2ID+0.2, d=p2holeD, $fn=18);
+      cylinder(h=p2OD-p2ID+0.2, d=p2holeD, $fn=18);
     }
   } 
 }//end for
@@ -236,7 +236,7 @@ difference(){
 for(i=[1:p2needles*(p2number/p3number)]){
   rotate([0,0,(360/p2number/p2needles/2)-(360/p2number/p2needles*i)]){
   translate([-(p3wallID/2),-p3grooveW*p3needleholefactorW/2,0])
-    #cube([(p3wallID/2),p3grooveW*p3needleholefactorW,p3base45H+p3ridgeH+1]);  //Z = p3base45H
+    cube([(p3wallID/2),p3grooveW*p3needleholefactorW,p3base45H+p3ridgeH+1]);  //Z = p3base45H
   }
 }
 difference(){
