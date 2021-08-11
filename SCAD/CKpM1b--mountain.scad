@@ -46,9 +46,7 @@ mirror([1,0,0])
     translate([pMbodyXr-pMshelfchamfR,((c2ID+(pMgroove*2)+(pMwallT*2))/2)-(aaX-aaT),pPspace2+pPplate2])
 cube([aaT,aaX-aaT,pMshelfchamfR]);
 
-CubeChmfD=6;  
-  
-/*    
+CubeChmfD=6;    
     translate([pMbodyXr-pMshelfchamfR-(aaX-aaT),((c2ID+(pMgroove*2)+(pMwallT*2))/2)-(aaX-aaT),pMH])
     difference(){
         translate([0,-(CubeChmfD/2),0])
@@ -91,7 +89,6 @@ translate([0,0,(aaX+1)])
 rotate([0,45,45])
         cube([2,3,3],center=true);
     }
-*/
 
 if(RenderBeam==1){
     translate([pMbodyXr-pMshelfchamfR-(aaX-aaT),((c2ID+(pMgroove*2)+(pMwallT*2))/2)-(aaX-aaT),pPspace2+pPplate2+pMshelfchamfR])
@@ -107,8 +104,7 @@ mirror(1,0,0)
         cube([aaX,aaX,pMgrooveC3+nA-nC-nB+aaX]);  //cube 
         cube([aaX-aaT,aaX-aaT,pMgrooveC3+nA-nC-nB+aaX]);
     } //end angle iron    
-
-/*    
+    
 translate([
     0,
     p3wallOD/2,
@@ -117,16 +113,9 @@ translate([
 mirror([0,0,1])
 translate([0,0,tipOpenX/2])
 CKpM2();
-*/    
-
-translate([
-    pMbodyXr-pMshelfchamfR
-    ,((c2ID+(pMgroove*2)+(pMwallT*2))/2)
-    ,(((pPspace2+pPplate2+1)+(aaboltHD/2)+bearingholderZBOD)+(pMH-(aaboltHD/2)-5))/2
-    ])
-
-
     
+
+translate([pMbodyXr-pMshelfchamfR,((c2ID+(pMgroove*2)+(pMwallT*2))/2),pPspace2+pPplate2+pMshelfchamfR])    
 CKpM3();    
 
 mirror([1,0,0])
@@ -390,83 +379,25 @@ rotate([0,0,45])
 
 
 //translate([sin(pMd4s)*(pMID/2),(pMID/2),pPspace2+pPplate2+(aaX)])
-translate([
-    (((c2ID+(pMgroove*2))/2)*cos(90-(pMd1e-pMd0)))-pMshelfchamfR-(aaX-aaT)-(aaboltD/2)-1
-    ,(c2ID+(pMgroove*2)+(pMwallT*2))/2
-    ,(pPspace2+pPplate2+1)+(aaboltHD/2)+bearingholderZBOD
-    ])
+translate([(((c2ID+(pMgroove*2))/2)*cos(90-(pMd1e-pMd0)))-pMshelfchamfR-(aaX-aaT)-(aaboltD/2)-1,(c2ID+(pMgroove*2)+(pMwallT*2))/2,(pPspace2+pPplate2+1)+(aaboltHD/2)+bearingholderZBOD])
 rotate([90,0,0])
 cylinder(d=aaboltD,h=(c2ID+(pMgroove*2)+(pMwallT*2))/2,$fn=36);
 
-/*
 translate([(((c2ID+(pMgroove*2))/2)*cos(90-(pMd1e-pMd0)))-pMshelfchamfR-(aaX-aaT)-(aaboltD/2)-1,((c2ID+(pMgroove*2)+(pMwallT*2))/2)-((((pMID/2)-(cos(pMd4s)*(pMID/2)))+pMwallT+pMgroove)-(sin(pMd4s)*(aaboltHD))-2-aaboltHH),(pPspace2+pPplate2+1)+(aaboltHD/2)+bearingholderZBOD])
 rotate([90,0,0])
 #cylinder(d=aaboltHD+0.5,h=(c2ID+(pMgroove*2)+(pMwallT*2))/2,$fn=36);
-*/   
-//translate([0,-7,0])
-translate([
-    (((c2ID+(pMgroove*2))/2)*cos(90-(pMd1e-pMd0)))-pMshelfchamfR-(aaX-aaT)-(aaboltD/2)-1-((pMsqNutW+pMsqNutSlop)/2)
-    ,-(aaX-aaT)-(aaboltD/2)+((c2ID+(pMgroove*2)+(pMwallT*2))/2)+((pMsqNutW+pMsqNutSlop)/2)
-    ,(pPspace2+pPplate2+1)+(aaboltHD/2)+bearingholderZBOD-((pMsqNutW+pMsqNutSlop)/2)
-    ])
-cube([
-    pMshelfX+((aaX-aaT)+(aaboltD/2)+1)+((pMsqNutW+pMsqNutSlop)/2)
-    ,pMsqNutH+pMsqNutSlop
-    ,pMsqNutW+pMsqNutSlop
-    ]);
+     
     
-//////TEST///////////
 
-translate([
-    (((c2ID+(pMgroove*2))/2)*cos(90-(pMd1e-pMd0)))-pMshelfchamfR-(aaX-aaT)-(aaboltD/2)-1
-    ,(c2ID+(pMgroove*2)+(pMwallT*2))/2
-    ,pMH-(aaboltHD/2)-5
-    ])
+
+translate([(((c2ID+(pMgroove*2))/2)*cos(90-(pMd1e-pMd0)))-pMshelfchamfR-(aaX-aaT)-(aaboltD/2)-1,(c2ID+(pMgroove*2)+(pMwallT*2))/2,pMH-(aaboltHD/2)-5])
 rotate([90,0,0])
 cylinder(d=aaboltD,h=(c2ID+(pMgroove*2)+(pMwallT*2))/2,$fn=36);
-
-translate([
-    (((c2ID+(pMgroove*2))/2)*cos(90-(pMd1e-pMd0)))-pMshelfchamfR-(aaX-aaT)-(aaboltD/2)-1-((pMsqNutW+pMsqNutSlop)/2)
-    ,-(aaX-aaT)-(aaboltD/2)+((c2ID+(pMgroove*2)+(pMwallT*2))/2)+((pMsqNutW+pMsqNutSlop)/2)
-    ,pMH-(aaboltHD/2)-5-((pMsqNutW+pMsqNutSlop)/2)
-    ])
-cube([
-    pMshelfX+((aaX-aaT)+(aaboltD/2)+1)+((pMsqNutW+pMsqNutSlop)/2)
-    ,pMsqNutH+pMsqNutSlop
-    ,pMsqNutW+pMsqNutSlop
-    ]);
-
-
-/*
-translate([
-    (((c2ID+(pMgroove*2))/2)*cos(90-(pMd1e-pMd0)))-pMshelfchamfR-(aaX-aaT)-(aaboltD/2)-1
-    ,((c2ID+(pMgroove*2)+(pMwallT*2))/2)-((((pMID/2)-(cos(pMd4s)*(pMID/2)))+pMwallT+pMgroove)-(sin(pMd4s)*(aaboltHD))-2-aaboltHH)
-    ,pMH-(aaboltHD/2)-5
-    ])
+translate([(((c2ID+(pMgroove*2))/2)*cos(90-(pMd1e-pMd0)))-pMshelfchamfR-(aaX-aaT)-(aaboltD/2)-1,((c2ID+(pMgroove*2)+(pMwallT*2))/2)-((((pMID/2)-(cos(pMd4s)*(pMID/2)))+pMwallT+pMgroove)-(sin(pMd4s)*(aaboltHD))-2-aaboltHH),pMH-(aaboltHD/2)-5])
 rotate([90,0,0])
 cylinder(d=aaboltHD+0.5,h=(c2ID+(pMgroove*2)+(pMwallT*2))/2,$fn=36);
-*/
 
-
-//hole 3
-translate([
-    (((c2ID+(pMgroove*2))/2)*cos(90-(pMd1e-pMd0)))-pMshelfchamfR-(aaX-aaT)-(aaboltD/2)-1    
-    ,-(aaX-aaT)-(aaboltD/2)-1+(c2ID+(pMgroove*2)+(pMwallT*2))/2
-    ,(((pPspace2+pPplate2+1)+(aaboltHD/2)+bearingholderZBOD)+(pMH-(aaboltHD/2)-5))/2
-    ])
-rotate([90,0,90])
-cylinder(d=aaboltD,h=aaX+(aaboltHH*2),$fn=36);
-
-translate([
-    (((c2ID+(pMgroove*2))/2)*cos(90-(pMd1e-pMd0)))-pMshelfchamfR-(aaX-aaT)-(aaboltD/2)-1+((pMsqNutW+pMsqNutSlop)/2)
-    ,((c2ID+(pMgroove*2)+(pMwallT*2))/2)-(((aaX-aaT)+(aaboltD/2)+1)+((pMsqNutW+pMsqNutSlop)/2))
-    ,((((pPspace2+pPplate2+1)+(aaboltHD/2)+bearingholderZBOD)+(pMH-(aaboltHD/2)-5))/2)-((pMsqNutW+pMsqNutSlop)/2)
-    ])
-cube([
-    pMsqNutH+pMsqNutSlop
-    ,(((aaX-aaT)+(aaboltD/2)+1)+((pMsqNutW+pMsqNutSlop)/2))
-    ,pMsqNutW+pMsqNutSlop
-    ]);
+    
     
 } //end if
     

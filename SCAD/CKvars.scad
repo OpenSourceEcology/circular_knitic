@@ -376,6 +376,10 @@ pMH-(pMH-(aaboltHD/2)-5)
 pM3mink=6;
 pM3slop=0.25;
 
+pMsqNutW=5.5;
+pMsqNutH=1.8;
+pMsqNutSlop=0.25;
+
 //c2 geared plate - clean up below, not used to generate gear
 c2H=bottom_surface_motor_gearsH;
 c2gap=0.6;  //gap between c2ID and p3wallOD  // 0.7?  0.5?  0.35? how low can you go?
