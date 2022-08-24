@@ -12,6 +12,8 @@ use <CKc3--topplate.scad>
 
 pi=3.1415926535897932384626433832795;
 
+p1ChmfR=4;
+
 mirror([0,0,1])
 CKp1();
 
@@ -30,7 +32,9 @@ cylinder(h=p1H+2,d=NEMAshaftOD);  // donut hole
 
 difference(){
     cylinder(d=c3OD,h=pPspace1-1);
-    cylinder(d=NEMAfaceCricOD+2,h=pPspace1-1);
+    cylinder(d=NEMAfaceCricOD-1,h=pPspace1-1);
+    translate([0,0,pPspace1-1-p1ChmfR])
+    cylinder(d1=NEMAfaceCricOD-1,d2=NEMAfaceCricOD-1+(p1ChmfR*2),h=p1ChmfR);    
 }
 
 
