@@ -5,6 +5,7 @@ CKpM3();
 
 
 module CKpM3(){    
+translate([0,0,-pM3H/2]){
 mirror([0,1,0])
 mirror([1,0,0])
 difference(){
@@ -16,10 +17,10 @@ pM3profile(pM3c2c-(aaboltD*2),pM3mink);
 }    
 
 translate([-aaT/3,-aaT/3,0])
-  cube([(aaboltD*3)+aaX+pM3mink,aaX+pM3mink,pM3H]);  //cube 
+  cube([(aaboltD*3)+aaX+pM3mink,(aaboltD*3)+aaX+pM3mink,pM3H+1]);  //cube 
 
 translate([-aaT,-aaT,0])
-  cube([aaX+pM3slop/2,aaX+pM3slop/2,pM3H]);  //cube 
+  cube([aaX+pM3slop/2,aaX+pM3slop/2,pM3H+1]);  //cube 
 
     
      translate([-(-(aaX-aaT)-(aaboltD/2)-1),0,pM3c2e])  
@@ -28,8 +29,13 @@ translate([-aaT,-aaT,0])
  translate([-(-(aaX-aaT)-(aaboltD/2)-1),0,pM3c2e+pM3c2c])  
  rotate([90,0,0])
    cylinder(d=aaboltD,h=aaX,$fn=36);
+
+     translate([0,-(-(aaX-aaT)-(aaboltD/2)-1),pM3c2e+(pM3c2c/2)])  
+ rotate([90,0,270])
+   cylinder(d=aaboltD,h=aaX,$fn=36);
     
 } //end diff
+} //end Z trans
 } //end module
 
 
@@ -46,8 +52,8 @@ RrR=RtX+RM;
 minkowski(){
 difference(){
 translate([-aaT,-aaT,0])
-  cube([(aaboltD*3)+aaX,aaX,h]);  //cube 
-  cube([(aaboltD*3)+aaX-aaT,aaX-aaT,h]);
+  cube([(aaboltD*3)+aaX,(aaboltD*2)+aaX,h]);  //cube 
+  cube([(aaboltD*3)+aaX-aaT,(aaboltD*2)+aaX-aaT,h]);
 }
 cylinder(d=pM3mink, h=0.01, $fn=36);  //,h=0.01  $fn=72
 } //end mink
