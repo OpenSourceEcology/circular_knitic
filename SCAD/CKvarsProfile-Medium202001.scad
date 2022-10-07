@@ -60,7 +60,7 @@ UPwoodbeamScrewOD=5;     // 1/4" screw hole into wood beam
 UPTF=1;    //  0=none  1=angle iron  2=makerbeam10mm
 
 //angle iron option dimensions
-UPaaX=10;      //width            //12.7    =  1/2in          
-UPaaT=2;    //thickness        //1.5875  = 1/16in
+UPaaX=13;      //width            //12.7    =  1/2in          
+UPaaT=1.6;    //thickness        //1.5875  = 1/16in
 
 ///////////////////////////////////////////////
