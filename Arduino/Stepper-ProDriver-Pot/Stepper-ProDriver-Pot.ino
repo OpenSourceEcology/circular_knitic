@@ -1,16 +1,15 @@
 /*
- * SparkFun ProDriver - Stepper Motor Driver (TC78H670FTG) Control
+ * Stepper-ProDriver-Pot.ino
  * 
- * This sketch controls stepper motors using the SparkFun ProDriver
- * which uses the TC78H670FTG stepper motor driver IC.
+ * This version adds potentiometer control for variable motor speed.
  * 
- * The ProDriver provides step/direction control similar to other drivers
- * but with additional features like enable pin and higher current capacity.
+ * Hardware Setup:
+ * - Connect potentiometer center pin to analog pin A0
+ * - Connect potentiometer outer pins to 5V and GND
+ * - Stepper motor control via SparkFun ProDriver (TC78H670FTG) as in original version
  * 
- * Pin connections:
- * - Motor 1: Step pin 3, Direction pin 2, Enable pin 6
- * - Motor 2: Step pin 5, Direction pin 4, Enable pin 7
- * - Switch pins: Forward pin 8, Backward pin 9
+ * The potentiometer controls the speed delay - turning it adjusts motor speed
+ * from fast (1000 microseconds delay) to slow (15000 microseconds delay)
  */
 
 // Motor 1 pins
@@ -27,7 +26,9 @@ int en2 = 7;     // Connect to ENABLE pin on ProDriver 2
 int switchForward = 8;   // Forward direction switch
 int switchBackward = 9;  // Backward direction switch
 
-int speedDelay = 8000;   // Delay between steps in microseconds
+// Speed control
+int speedDelay = 8000;   // Delay between steps in microseconds (default)
+int potPin = A0;         // Potentiometer connected to analog pin A0
 
 void setup() 
 {                
@@ -58,6 +59,12 @@ void setup()
 
 void loop() 
 {
+  // Read potentiometer value and map to speed delay range
+  int potValue = analogRead(potPin);
+  // Map potentiometer (0-1023) to speed delay (1000-15000 microseconds)
+  // Lower delay = faster speed, higher delay = slower speed
+  speedDelay = map(potValue, 0, 1023, 1000, 15000);
+  
   int forwardState = digitalRead(switchForward);
   int backwardState = digitalRead(switchBackward);
   
