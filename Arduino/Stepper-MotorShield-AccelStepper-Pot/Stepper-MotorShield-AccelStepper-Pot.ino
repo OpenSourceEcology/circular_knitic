@@ -21,8 +21,6 @@ const int brakeA = 8;
 const int brakeB = 9;
 int potPin = A0; // Potentiometer connected to analog pin A0
 
-int switchStateForward = digitalRead(7);  
-
 void setup()
 { 
 
@@ -31,6 +29,8 @@ void setup()
   pinMode(pwmB, OUTPUT);
   pinMode(brakeA, OUTPUT);
   pinMode(brakeB, OUTPUT);
+
+  pinMode(7, INPUT_PULLUP);
  
   digitalWrite(pwmA, HIGH);
   digitalWrite(pwmB, HIGH);
@@ -47,6 +47,9 @@ void setup()
 }
 
 void loop(){ 
+
+  // Read switch state
+  int switchStateForward = digitalRead(7);
 
   // Read potentiometer value and map to speed range
   int potValue = analogRead(potPin);
