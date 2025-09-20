@@ -11,6 +11,7 @@
  * - Motor 1: Step pin 3, Direction pin 2, Enable pin 6
  * - Motor 2: Step pin 5, Direction pin 4, Enable pin 7
  * - Switch pins: Forward pin 8, Backward pin 9
+ * - Speed potentiometer: Analog pin A0
  */
 
 // Motor 1 pins
@@ -27,7 +28,11 @@ int en2 = 7;     // Connect to ENABLE pin on ProDriver 2
 int switchForward = 8;   // Forward direction switch
 int switchBackward = 9;  // Backward direction switch
 
-int speedDelay = 8000;   // Delay between steps in microseconds
+// Speed control
+int potPin = A0;         // Potentiometer for speed control (analog input)
+int speedDelay = 8000;   // Delay between steps in microseconds (default)
+int minSpeedDelay = 500; // Minimum delay (fastest speed)
+int maxSpeedDelay = 15000; // Maximum delay (slowest speed)
 
 void setup() 
 {                
@@ -58,6 +63,10 @@ void setup()
 
 void loop() 
 {
+  // Read potentiometer and update speed
+  int potValue = analogRead(potPin);
+  speedDelay = map(potValue, 0, 1023, minSpeedDelay, maxSpeedDelay);
+  
   int forwardState = digitalRead(switchForward);
   int backwardState = digitalRead(switchBackward);
   

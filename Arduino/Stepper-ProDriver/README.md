@@ -16,6 +16,10 @@
 - Arduino Pin 8 → Forward Switch (with pullup resistor)
 - Arduino Pin 9 → Backward Switch (with pullup resistor)
 
+### Speed Control
+- Arduino Pin A0 → Potentiometer center tap (10kΩ recommended)
+- Connect potentiometer ends to 5V and GND
+
 ### Power Connections
 - Connect Arduino GND to ProDriver GND
 - Connect appropriate power supply to ProDriver VIN
@@ -26,6 +30,8 @@
 - Enable pins are active LOW (LOW = enabled, HIGH = disabled)
 - The sketch automatically disables motors when switches are not pressed to save power
 - Motors rotate in opposite directions by default for circular knitting applications
+- Speed is controlled by a 10kΩ potentiometer: clockwise = slower, counter-clockwise = faster
+- Speed range: 500μs to 15000μs delay between steps
 
 ## Microstepping
 The ProDriver supports microstepping configuration through mode pins. Refer to the SparkFun documentation for setting microstepping modes if needed.
