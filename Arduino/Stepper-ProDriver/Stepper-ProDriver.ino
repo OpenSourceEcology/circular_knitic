@@ -97,11 +97,13 @@ void stepMotors()
 {
   // Step motor 1
   digitalWrite(stp, HIGH); 
+  delayMicroseconds(2);    // Ensure minimum HIGH pulse width
   digitalWrite(stp, LOW);   
   delayMicroseconds(speedDelay);   
   
   // Step motor 2
   digitalWrite(stp2, HIGH);
+  delayMicroseconds(2);    // Ensure minimum HIGH pulse width
   digitalWrite(stp2, LOW);
   delayMicroseconds(speedDelay);       
 }
