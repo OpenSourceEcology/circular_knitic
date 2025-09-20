@@ -12,7 +12,7 @@
  * from fast (5ms delay) to slow (100ms delay)
  */
 
-int delaylegnth = 20;
+int delayLength = 20;
 int potPin = A0; // Potentiometer connected to analog pin A0
 
 void setup() {
@@ -38,7 +38,7 @@ int switchStateBackward = digitalRead(4);
 // Read potentiometer value and map to delay length
 int potValue = analogRead(potPin);
 // Map potentiometer (0-1023) to delay length (5-100 milliseconds)
-delaylegnth = map(potValue, 0, 1023, 5, 100);
+delayLength = map(potValue, 0, 1023, 5, 100);
 
 //use a while statement to run continuasly if ON switched
 if (switchStateForward == LOW){
@@ -49,7 +49,7 @@ if (switchStateForward == LOW){
   digitalWrite(12, HIGH);   //Sets direction of CH A
   analogWrite(3, 255);   //Moves CH A
   
-  delay(delaylegnth);
+  delay(delayLength);
   
   digitalWrite(9, HIGH);  //DISABLE CH A
   digitalWrite(8, LOW); //ENABLE CH B
@@ -57,7 +57,7 @@ if (switchStateForward == LOW){
   digitalWrite(13, LOW);   //Sets direction of CH B
   analogWrite(11, 255);   //Moves CH B
   
-  delay(delaylegnth);
+  delay(delayLength);
   
   digitalWrite(9, LOW);  //ENABLE CH A
   digitalWrite(8, HIGH); //DISABLE CH B
@@ -65,7 +65,7 @@ if (switchStateForward == LOW){
   digitalWrite(12, LOW);   //Sets direction of CH A
   analogWrite(3, 255);   //Moves CH A
   
-  delay(delaylegnth);
+  delay(delayLength);
     
   digitalWrite(9, HIGH);  //DISABLE CH A
   digitalWrite(8, LOW); //ENABLE CH B
@@ -73,7 +73,7 @@ if (switchStateForward == LOW){
   digitalWrite(13, HIGH);   //Sets direction of CH B
   analogWrite(11, 255);   //Moves CH B
   
-  delay(delaylegnth);
+  delay(delayLength);
 
 } //end if forward
 
@@ -84,7 +84,7 @@ if (switchStateBackward == LOW){
   digitalWrite(12, HIGH);   //Sets direction of CH A
   analogWrite(3, 255);   //Moves CH A
   
-  delay(delaylegnth);
+  delay(delayLength);
   
   digitalWrite(9, HIGH);  //DISABLE CH A
   digitalWrite(8, LOW); //ENABLE CH B
@@ -92,7 +92,7 @@ if (switchStateBackward == LOW){
   digitalWrite(13, HIGH);   //Sets direction of CH B
   analogWrite(11, 255);   //Moves CH B
   
-  delay(delaylegnth);
+  delay(delayLength);
   
   digitalWrite(9, LOW);  //ENABLE CH A
   digitalWrite(8, HIGH); //DISABLE CH B
@@ -100,7 +100,7 @@ if (switchStateBackward == LOW){
   digitalWrite(12, LOW);   //Sets direction of CH A
   analogWrite(3, 255);   //Moves CH A
   
-  delay(delaylegnth);
+  delay(delayLength);
     
   digitalWrite(9, HIGH);  //DISABLE CH A
   digitalWrite(8, LOW); //ENABLE CH B
@@ -108,7 +108,7 @@ if (switchStateBackward == LOW){
   digitalWrite(13, LOW);   //Sets direction of CH B
   analogWrite(11, 255);   //Moves CH B
   
-  delay(delaylegnth);
+  delay(delayLength);
 } //end if backward
 
 }
